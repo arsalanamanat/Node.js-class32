@@ -1,9 +1,22 @@
 const express = require('express');
-const app = express();
+const path = require('path');
+const bodyParser = require('body-parser');
+let urlencodedParser = bodyParser.urlencoded({ extended: false });
+const exphbs = require('express-handlebars');
 const PORT = 3000;
+const app = express();
+
+app.set('views', path.join(__dirname, 'views'));
+app.engine('handlebars', exphbs({ defaultLayout: 'index' }));
+app.set('view engine', 'handlebars');
 
 app.get('/', (req, res) => {
-  res.send('hello from backend to frontend!');
+  res.write('Hello World');
+  // res.render('home');
+});
+
+app.post('/weather', urlencodedParser, (req, res) => {
+  res.write('req.body');
 });
 
 app.listen(PORT);
