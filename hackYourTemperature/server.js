@@ -11,12 +11,13 @@ app.engine('handlebars', exphbs({ defaultLayout: 'index' }));
 app.set('view engine', 'handlebars');
 
 app.get('/', (req, res) => {
-  res.write('Hello World');
-  // res.render('home');
+  res.render('home');
 });
 
 app.post('/weather', urlencodedParser, (req, res) => {
-  res.write('req.body');
+  const cityName = req.body;
+  console.log(cityName);
+  res.render('home', { data: cityName });
 });
 
 app.listen(PORT);
