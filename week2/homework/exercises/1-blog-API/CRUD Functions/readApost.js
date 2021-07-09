@@ -1,20 +1,18 @@
 const fs = require('fs');
 const path = require('path');
 
-const updateBlog = (req, res) => {
+const readPost = (req, res) => {
   if (
     fs.existsSync(path.join(__dirname, '../Created Files', req.params.title))
   ) {
-    fs.writeFileSync(
+    const post = fs.readFileSync(
       path.join(__dirname, '../Created Files', req.params.title),
-      req.body.content,
     );
-    res.status(200);
-    res.send(`Your Blog has been Updated`);
+    res.send(post);
     res.end();
   } else {
-    res.send('This post does not exist!');
+    res.send('This File Does not Exist');
   }
 };
 
-module.exports = updateBlog;
+module.exports = readPost;
