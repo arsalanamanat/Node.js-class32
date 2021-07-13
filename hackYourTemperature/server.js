@@ -16,7 +16,6 @@ app.get('/', (req, res) => {
 
 app.post('/weather', urlencodedParser, (req, res) => {
   const cityName = req.body;
-  console.log(cityName);
   res.render('home', { data: cityName });
 });
 
