@@ -10,6 +10,8 @@
  * - Print the entire response to the console to see how it is structured.
  */
 
+
+// Function to work 
 function printChuckNorrisJoke() {
   // YOUR CODE GOES IN HERE
 
