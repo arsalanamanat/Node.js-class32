@@ -20,9 +20,9 @@ app.get('/', (req, res) => {
 // Search the Weather of City
 app.post('/weather', urlencodedParser, async (req, res) => {
   try {
-    cityName = req.body;
+    const { cityName } = req.body;
     const apiData = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${cityName.cityName}&appid=aad95079755376d27ed883954e1b0449`,
+      `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=aad95079755376d27ed883954e1b0449`,
     );
 
     const responseData = await apiData.json();
@@ -34,10 +34,7 @@ app.post('/weather', urlencodedParser, async (req, res) => {
       weatherData: `The Temperature in ${selectedCityName} is ${temp} degree C`,
     });
   } catch (err) {
-    // res.status(404);
-    // res.write(`Invalid Request`);
-
-    res.render('home', { weatherData: `The city is not found` });
+    res.render('home', { Error: `The city is not found` });
   }
 });
 
