@@ -29,6 +29,4 @@ let server = http.createServer(function (req, res) {
   }
 });
 
-server.listen(4000); // The server starts to listen on port 3000
-
-// Note: My computer port 3000 was already taken thats why i changed it to port 4000
+server.listen(4000);
